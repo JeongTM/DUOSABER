@@ -1,0 +1,29 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]pp[Pp]ackages/
+[Bb]undle[Aa]rtifacts/
+
+# NuGet and local package caches
+packages/
+*.nupkg
+
+# Logs and caches
+*.log
+*.cache
+
+# OS/editor files
+Thumbs.db
+Desktop.ini
+.DS_Store

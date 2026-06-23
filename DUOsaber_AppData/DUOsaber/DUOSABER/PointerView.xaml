@@ -1,0 +1,22 @@
+﻿<Window x:Class="DUOsaber.PointerView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DUOsaber"
+        WindowStyle="None"
+        mc:Ignorable="d"
+        Title="PointerView" Height="80" Width="80" Background="Transparent" Foreground="#00000000" AllowsTransparency="True" Topmost="True" SizeChanged="Window_SizeChanged" Left="0" Top="0" HorizontalAlignment="Left" VerticalAlignment="Top" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True" IsTabStop="False" IsHitTestVisible="False" Focusable="False" ResizeMode="NoResize">
+    <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Image x:Name="imagePointer" Height="80" Width="80" SnapsToDevicePixels="True"/>
+        <Canvas x:Name="pointPointer" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Ellipse x:Name="circlePoint" Width="80" Height="80" Fill="Red"/>
+        </Canvas>
+        <Canvas x:Name="magCircle" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Ellipse x:Name="magStroke" Width="80" Height="80" Stroke="Black" StrokeThickness="10"/>
+        </Canvas>
+        <Label x:Name="changeLabel" Content=""/>
+    </Grid>
+
+
+</Window>

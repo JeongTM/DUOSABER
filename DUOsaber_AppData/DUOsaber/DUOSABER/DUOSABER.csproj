@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F67B665B-ECA2-48F9-B656-9F739323AEBE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DUOsaber</RootNamespace>
+    <AssemblyName>DUOSABER</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>게시\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>Custom</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.2.0.2\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Class1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormStroke.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStroke.Designer.cs">
+      <DependentUpon>FormStroke.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSpotlight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSpotlight.Designer.cs">
+      <DependentUpon>FormSpotlight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FromMagnifier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FromMagnifier.designer.cs">
+      <DependentUpon>FromMagnifier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\Stringlib.Designer.cs">
+      <DependentUpon>Stringlib.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="MagnifierGlass.cs" />
+    <Compile Include="MagnifierPage.xaml.cs">
+      <DependentUpon>MagnifierPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModeLabel.xaml.cs">
+      <DependentUpon>ModeLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="NativeStructures.cs" />
+    <Compile Include="OverlapBlock.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.ja-JP.Designer.cs">
+      <DependentUpon>Resources.ja-JP.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Resources.ko-KR.Designer.cs">
+      <DependentUpon>Resources.ko-KR.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SelectMainDevice.xaml.cs">
+      <DependentUpon>SelectMainDevice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SpotlightBase.xaml.cs">
+      <DependentUpon>SpotlightBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SpotLightPage.xaml.cs">
+      <DependentUpon>SpotLightPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\Stringlib.ko-KR.Designer.cs">
+      <DependentUpon>Stringlib.ko-KR.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Localization\Stringlib.en-US.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stringlib.en-US.resx</DependentUpon>
+    </Compile>
+    <Page Include="ChMatchPage1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ColorPointerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ImagePointerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MagnifierPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ChMatchPage1.xaml.cs">
+      <DependentUpon>ChMatchPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPointerPage.xaml.cs">
+      <DependentUpon>ColorPointerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FlagSet.cs" />
+    <Compile Include="ImagePointerPage.xaml.cs">
+      <DependentUpon>ImagePointerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="ModeLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PointerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectMainDevice.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SpotlightBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SpotLightPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PointerView.xaml.cs">
+      <DependentUpon>PointerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="FormSpotlight.resx">
+      <DependentUpon>FormSpotlight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStroke.resx">
+      <DependentUpon>FormStroke.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FromMagnifier.resx">
+      <DependentUpon>FromMagnifier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Stringlib.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Stringlib.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ja-JP.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.ja-JP.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Stringlib.ko-KR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Stringlib.ko-KR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Stringlib.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Stringlib.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Setting\ColorSetting" />
+    <None Include="Setting\FlagSetting" />
+    <None Include="Setting\ImageSetting" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\HidLibrary\HidLibrary.csproj">
+      <Project>{9E8F1D50-74EA-4C60-BD5C-AB2C5B53BC66}</Project>
+      <Name>HidLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.ko-KR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.ko-KR.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\이미지포인터.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CustomImage\defaultImage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\고양이.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\고양이손%28황색%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\고양이손%28회색%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\곰인형.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\공룡%28캐주얼%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\꽃.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\다이아몬드.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\돋보기.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\돼지.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\마술봉.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\마우스.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\마우스커서.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\반짝이는화살표.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\발바닥.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\별%28캐주얼%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\별마크.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\붓.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\비행기.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\사인펜.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\손.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\손지시봉.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\연필%28캐주얼%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\연필.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\오징어 게임_네모_1105.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\오징어 게임_세모_1105.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\오징어 게임_원_1105.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\오징어 게임_합_1105.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\유니콘.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\인덱스마크.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\전구-1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\전구-2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\종이비행기.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\지우개.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\체크.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\초이스로고.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\클로버.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\타겟.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\펜.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\펜밑줄-1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\펜밑줄-2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\펜밑줄-3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\펜밑줄-4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\하트.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\형광펜.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\형광펜선-1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\형광펜선-2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\화살표%28캐주얼%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chois_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="이미지포인터.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="chois_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\CustomImage\defaultImage_cyan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\CustomImage\defaultImage_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CustomImage\defaultImage_cyan.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="CustomImage\defaultImage_red.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Play arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Play arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\엑스포인터 로고_흰색-20220617-chois.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DUOsaber.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="듀오세이버.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="듀오세이버.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="듀오.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="듀오.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\듀오.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DUO.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\xpointerLogo_chois.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="xpointerLogo_chois.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="xpointerLogoBG_chois.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Clip path group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="LArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="LaftArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="LaftArrow1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DUOicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DUONicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\buttonmark170.png" />
+    <Resource Include="Resources\buttonmark300.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\XPD170Y.png" />
+    <Resource Include="Resources\XPD300Y.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DUOicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DUOicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="btn_icon_exclamation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="btn_icon_exclamation-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2%28x86 및 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DUOsaberlogo-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="300y1-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="170Y1-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="170Y1-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="300y1-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CustomImage_sanwa\airplane.png" />
+    <Resource Include="CustomImage_sanwa\clover-1.png" />
+    <Resource Include="CustomImage_sanwa\clover-2.png" />
+    <Resource Include="CustomImage_sanwa\cursor.png" />
+    <Resource Include="CustomImage_sanwa\hand pointer-1.png" />
+    <Resource Include="CustomImage_sanwa\hand pointer-2.png" />
+    <Resource Include="CustomImage_sanwa\heart-1.png" />
+    <Resource Include="CustomImage_sanwa\heart-3.png" />
+    <Resource Include="CustomImage_sanwa\heart-4.png" />
+    <Resource Include="CustomImage_sanwa\high lighter-red.png" />
+    <Resource Include="CustomImage_sanwa\high lihgter-pink.png" />
+    <Resource Include="CustomImage_sanwa\Index mark.png" />
+    <Resource Include="CustomImage_sanwa\lighter.png" />
+    <Resource Include="CustomImage_sanwa\magic wand.png" />
+    <Resource Include="CustomImage_sanwa\palm.png" />
+    <Resource Include="CustomImage_sanwa\pen-1.png" />
+    <Resource Include="CustomImage_sanwa\pen-2.png" />
+    <Resource Include="CustomImage_sanwa\pen-3.png" />
+    <Resource Include="CustomImage_sanwa\pen-4.png" />
+    <Resource Include="CustomImage_sanwa\Sanwa logo.png" />
+    <Resource Include="CustomImage_sanwa\star light.png" />
+    <Resource Include="CustomImage_sanwa\strar mark.png" />
+    <Resource Include="CustomImage_sanwa\target-1.png" />
+    <Resource Include="CustomImage_sanwa\target-2.png" />
+    <Resource Include="CustomImage_sanwa\v mark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="XPG300YD1-1.png" />
+    <Resource Include="XPM170YD1-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="XPG300YD1-2.png" />
+    <Resource Include="XPM170YD1-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="180Y1-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="180Y1-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pointer\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

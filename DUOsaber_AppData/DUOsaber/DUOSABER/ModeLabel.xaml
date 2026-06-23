@@ -1,0 +1,18 @@
+﻿<Window x:Class="DUOsaber.ModeLabel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DUOsaber"
+        mc:Ignorable="d"
+        Title="ModeLabel" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" Topmost="True" Width="210" Height="42" ShowInTaskbar="False">
+    <Border BorderThickness="1" CornerRadius="10,10,10,10" Background="#FF1A1B26">
+        <Grid>
+            <Label x:Name="PTlText" Content="프레젠테이션 모드" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="40" Foreground="White" FontWeight="Bold" Visibility="Hidden"/>
+            <Label x:Name="GenText" Content="회의 모드" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="40" Foreground="White" FontWeight="Bold" Visibility="Hidden" Padding="0,0,0,0"/>
+
+        </Grid>
+    </Border>
+
+   
+</Window>

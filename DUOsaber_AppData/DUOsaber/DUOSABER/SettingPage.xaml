@@ -1,0 +1,445 @@
+﻿<Page x:Class="DUOsaber.SettingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DUOsaber"
+      mc:Ignorable="d" 
+      Title="SettingPage" Width="536" Height="556">
+    <Page.Resources>
+        <ControlTemplate x:Key="NoMouseOverButtonTemplate" TargetType="Button">
+            <Border 
+                Background="{TemplateBinding Background}"  
+                BorderBrush="{TemplateBinding BorderBrush}"  
+                BorderThickness="{TemplateBinding BorderThickness}" Padding="5,0,5,0">
+                <ContentPresenter 
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{x:Static SystemColors.ControlLightBrush}" />
+                    <Setter Property="Foreground" Value="{x:Static SystemColors.GrayTextBrush}" />
+
+                </Trigger>
+
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+
+
+        <!-- 드롭다운 버튼 외형 변경 -->
+        <Style TargetType="{x:Type ToggleButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Grid>
+                            <Border BorderBrush="{Binding BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
+                            BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}}"
+                            Background="#FF20212F">
+                                <ContentPresenter FlowDirection="RightToLeft"
+                                          VerticalAlignment="Center"
+                                          Margin="0,0,7,0"
+                                          Content="▼" />
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                             Value="True">
+                                <Setter Property="BorderBrush"
+                                Value="Blue" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 콤보박스 아이템 외형 변경 -->
+        <Style TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border Padding="5,2,2,2"
+                        Background="#FF20212F"
+                        x:Name="ComboBoxItem_Border" BorderBrush="#FF4B4E6F" BorderThickness="1,1,1,1">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                             Value="True">
+                                <Setter TargetName="ComboBoxItem_Border"
+                                Property="Background"
+                                Value="SkyBlue" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="BorderBrush"
+            Value="Black" />
+            <Setter Property="BorderThickness"
+            Value="1" />
+            <Setter Property="MinWidth"
+            Value="120" />
+            <Setter Property="MinHeight"
+            Value="20" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid>
+                            <!-- 드롭다운 버튼 -->
+                            <ToggleButton IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Content="▼" BorderBrush="White" Background="White" Foreground="#FFFF6B00" Padding="1,1,1,1" />
+
+                            <!-- 선택된 아이템 표시 -->
+                            <ContentPresenter IsHitTestVisible="False"
+                                      Content="{TemplateBinding SelectionBoxItem}"
+                                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                      VerticalAlignment="Center"
+                                      Margin="5,0,0,0" />
+
+                            <!-- 드롭다운 메뉴 -->
+                            <Popup IsOpen="{TemplateBinding IsDropDownOpen}"
+                           Placement="Bottom"
+                           PopupAnimation="Slide">
+                                <Grid Width="{TemplateBinding ActualWidth}"
+                              MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                              Background="White">
+                                    <Border BorderBrush="White"
+                                    BorderThickness="1,1,1,1">
+                                        <ScrollViewer>
+                                            <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
+                                        </ScrollViewer>
+                                    </Border>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--chackbox-->
+        <Style x:Key="{x:Type CheckBox}" TargetType="{x:Type CheckBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <BulletDecorator Background="Transparent">
+                            <BulletDecorator.Bullet>
+                                <Border x:Name="Border" Width="18" Height="18" BorderBrush="White" BorderThickness="2,2,2,2" CornerRadius="1,1,1,1" Background="#00FF6B00">
+                                    <Grid>
+                                        <Rectangle x:Name="InderminateMark" Width="9" Height="9" StrokeThickness="2" Fill="White" Visibility="Collapsed"/>
+                                        <Border x:Name="CheckBorder" Width="18" Height="18" BorderBrush="#FFFF6B00" BorderThickness="2,2,2,2" CornerRadius="1,1,1,1" Background="#FFFF6B00" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed">
+                                            <Path x:Name="CheckMark" Width="14" Height="14" Stroke="White" StrokeThickness="2" Data="M 2 6 L 5.5 10 L 11 4"/>
+                                        </Border>
+
+                                    </Grid>
+                                </Border>
+                            </BulletDecorator.Bullet>
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CheckBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                            </ObjectAnimationUsingKeyFrames>
+
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0" Value="#FFFF6B00" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CheckMark">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0" Value="White" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Indeterminate">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="InderminateMark">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                            </ObjectAnimationUsingKeyFrames>
+
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </BulletDecorator>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <SolidColorBrush x:Key="CustomSliderBackgroundSolidColorBrushKey" Color="#55ffffff" />
+        <SolidColorBrush x:Key="CustomSliderForegroundSolidColorBrushKey" Color="White" />
+        <SolidColorBrush x:Key="CustomSliderHighlightSolidColorBrushKey"  Color="#FFFF7E21" />
+        <ControlTemplate x:Key="CustomSliderThumbControlTemplateKey" TargetType="{x:Type Thumb}">
+            <Grid
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                UseLayoutRounding="True">
+                <Rectangle x:Name="gripRectangle"
+                    Width="8"
+                    Height="{Binding Path=Height, RelativeSource={RelativeSource TemplatedParent}}"
+                    RadiusX="3"
+                    RadiusY="3"
+                    StrokeThickness="0"
+                    Stretch="Fill"
+                    Fill="#FFFF6B00"
+                    UseLayoutRounding="True" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsDragging" Value="true">
+                    <Setter
+                        TargetName="gripRectangle"
+                        Property="Fill"
+                        Value="{StaticResource CustomSliderHighlightSolidColorBrushKey}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter
+                        TargetName="gripRectangle"
+                        Property="Fill"
+                        Value="{StaticResource CustomSliderBackgroundSolidColorBrushKey}" />
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="true">
+                    <Setter
+                        TargetName="gripRectangle"
+                        Property="Fill"
+                        Value="{StaticResource CustomSliderForegroundSolidColorBrushKey}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="CustomSliderControlTemplateKey" TargetType="{x:Type Slider}">
+            <Border x:Name="border"
+                Background="Transparent"
+                SnapsToDevicePixels="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{TemplateBinding MinHeight}" />
+                    </Grid.RowDefinitions>
+                    <DockPanel LastChildFill="True">
+                        <Border x:Name="PART_SelectionRange"
+                            Height="3"
+                            ClipToBounds="True"
+                            Visibility="Visible">
+                            <Rectangle
+                                Margin="4 0 -4 0"
+                                RadiusX="1"
+                                RadiusY="1"
+                                Fill="{StaticResource CustomSliderHighlightSolidColorBrushKey}" />
+                        </Border>
+                        <Border
+                            Height="3"
+                            ClipToBounds="True"
+                            Visibility="Visible">
+                            <Rectangle x:Name="PART_NegativeSelection"
+                                Margin="8 0 4 0"
+                                RadiusX="1"
+                                RadiusY="1"
+                                Fill="{DynamicResource CustomSliderForegroundSolidColorBrushKey}" />
+                        </Border>
+                    </DockPanel>
+                    <Track x:Name="PART_Track">
+                        <Track.Thumb>
+                            <Thumb x:Name="Thumb"
+                                Template="{StaticResource CustomSliderThumbControlTemplateKey}"
+                                OverridesDefaultStyle="True"
+                                VerticalAlignment="Center"
+                                Width="8"
+                                Height="{TemplateBinding MinHeight}"
+                                Focusable="False" />
+                        </Track.Thumb>
+                    </Track>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding ElementName=Thumb, Path=IsDragging}" Value="True">
+                    <Setter
+                        TargetName="PART_NegativeSelection"
+                        Property="Fill"
+                        Value="{StaticResource CustomSliderForegroundSolidColorBrushKey}" />
+                </DataTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="CustomSliderControlTemplateKey1" TargetType="{x:Type Slider}">
+            <Border x:Name="border"
+                Background="Transparent"
+                SnapsToDevicePixels="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{TemplateBinding MinHeight}" />
+                    </Grid.RowDefinitions>
+                    <DockPanel LastChildFill="True">
+                        <Border x:Name="PART_SelectionRange"
+                            Height="3"
+                            ClipToBounds="True"
+                            Visibility="Visible">
+                            <Rectangle
+                                Margin="4 0 -4 0"
+                                RadiusX="1"
+                                RadiusY="1"
+                                Fill="{StaticResource CustomSliderForegroundSolidColorBrushKey}" />
+                        </Border>
+                        <Border
+                            Height="3"
+                            ClipToBounds="True"
+                            Visibility="Visible">
+                            <Rectangle x:Name="PART_NegativeSelection"
+                                Margin="8 0 4 0"
+                                RadiusX="1"
+                                RadiusY="1"
+                                Fill="{DynamicResource CustomSliderForegroundSolidColorBrushKey}" />
+                        </Border>
+                    </DockPanel>
+                    <Track x:Name="PART_Track">
+                        <Track.Thumb>
+                            <Thumb x:Name="Thumb"
+                                Template="{StaticResource CustomSliderThumbControlTemplateKey}"
+                                OverridesDefaultStyle="True"
+                                VerticalAlignment="Center"
+                                Width="8"
+                                Height="{TemplateBinding MinHeight}"
+                                Focusable="False" />
+                        </Track.Thumb>
+                    </Track>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding ElementName=Thumb, Path=IsDragging}" Value="True">
+                    <Setter
+                        TargetName="PART_NegativeSelection"
+                        Property="Fill"
+                        Value="{StaticResource CustomSliderForegroundSolidColorBrushKey}" />
+                </DataTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="CustomSliderStyleKey" TargetType="{x:Type Slider}">
+            <Setter Property="Template"                     Value="{StaticResource CustomSliderControlTemplateKey}" />
+            <Setter Property="VerticalAlignment"            Value="Center"      />
+            <Setter Property="MinHeight"                    Value="26"          />
+            <Setter Property="MaxHeight"                    Value="26"          />
+            <Setter Property="Height"                       Value="26"          />
+            <Setter Property="BorderBrush"                  Value="Transparent" />
+            <Setter Property="Background"                   Value="Transparent" />
+            <Setter Property="IsMoveToPointEnabled"         Value="True"        />
+            <Setter Property="AutoToolTipPlacement"         Value="None"        />
+            <Setter Property="IsSnapToTickEnabled"          Value="True"        />
+            <Setter Property="TickFrequency"                Value="1"        />
+            <Setter Property="SmallChange"                  Value="0.01"        />
+            <Setter Property="LargeChange"                  Value="0.01"        />
+            <Setter Property="Minimum"                      Value="0"           />
+            <Setter Property="SelectionStart"               Value="{Binding Path=Minimum, RelativeSource={RelativeSource Self}}" />
+            <Setter Property="SelectionEnd"                 Value="{Binding Path=Value, RelativeSource={RelativeSource Self}}"   />
+            <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"       />
+        </Style>
+        <Style x:Key="CustomSliderStyleKey1" TargetType="{x:Type Slider}">
+            <Setter Property="Template"                     Value="{StaticResource CustomSliderControlTemplateKey1}" />
+            <Setter Property="VerticalAlignment"            Value="Center"      />
+            <Setter Property="MinHeight"                    Value="26"          />
+            <Setter Property="MaxHeight"                    Value="26"          />
+            <Setter Property="Height"                       Value="26"          />
+            <Setter Property="BorderBrush"                  Value="Transparent" />
+            <Setter Property="Background"                   Value="Transparent" />
+            <Setter Property="IsMoveToPointEnabled"         Value="True"        />
+            <Setter Property="AutoToolTipPlacement"         Value="None"        />
+            <Setter Property="IsSnapToTickEnabled"          Value="True"        />
+            <Setter Property="TickFrequency"                Value="1"        />
+            <Setter Property="SmallChange"                  Value="0.01"        />
+            <Setter Property="LargeChange"                  Value="0.01"        />
+            <Setter Property="Minimum"                      Value="0"           />
+            <Setter Property="SelectionStart"               Value="{Binding Path=Minimum, RelativeSource={RelativeSource Self}}" />
+            <Setter Property="SelectionEnd"                 Value="{Binding Path=Value, RelativeSource={RelativeSource Self}}"   />
+            <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"       />
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Label x:Name="SettingLabel" Content="설정" HorizontalAlignment="Left" Margin="47,32,0,0" VerticalAlignment="Top" Foreground="White" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+        <Grid Height="118" Width="440" HorizontalAlignment="Left" Margin="0,121,0,171" VerticalAlignment="Top">
+            <Label x:Name="CheckBox1" Height="18" Content="컬러 포인터" Margin="238,38,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Padding="5,0,0,0" VerticalContentAlignment="Center"/>
+            <CheckBox x:Name="colorPointerCheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="220,38,0,0" Tag="1" IsChecked="True" Checked="CheckBox_Checked" Width="100" Unchecked="CheckBox_Unchecked" Background="White" BorderBrush="{x:Null}" BorderThickness="1,0,0,0" VerticalContentAlignment="Center">
+
+            </CheckBox>
+
+            <Label x:Name="CheckBox3" Height="18" Content="하이라이트" Margin="60,71,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Padding="5,0,0,0" VerticalContentAlignment="Center"/>
+            <CheckBox x:Name="highliterCheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="42,71,0,0" Tag="3" IsChecked="True" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Width="100" BorderThickness="1,0,0,0" BorderBrush="{x:Null}">
+
+            </CheckBox>
+            <Label x:Name="CheckBox0" Height="18" Content="이미지 포인터" Margin="60,38,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Padding="5,0,0,0" VerticalContentAlignment="Center"/>
+            <CheckBox x:Name="customPointerCheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="42,38,0,0" Tag="0" Checked="CheckBox_Checked" IsChecked="True" Width="100" Unchecked="CheckBox_Unchecked" BorderThickness="1,0,0,0" Background="White" BorderBrush="{x:Null}">
+
+            </CheckBox>
+            <Label x:Name="CheckBox2" Height="18" Content="확대경" Margin="238,71,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Padding="5,0,0,0" VerticalContentAlignment="Center"/>
+            <CheckBox x:Name="magnifireCheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="220,71,0,0" Tag="2" IsChecked="True" Checked="CheckBox_Checked" Width="100" Unchecked="CheckBox_Unchecked" BorderThickness="1,0,0,0" BorderBrush="{x:Null}">
+
+            </CheckBox>
+        </Grid>
+        <Label x:Name="QuickModeSwap" Content="빠른 포인터 변환" HorizontalAlignment="Left" Margin="42,114,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0"/>
+        <Button Template="{StaticResource NoMouseOverButtonTemplate}" x:Name="BackToSetting" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="24" Margin="16,42,0,0" BorderBrush="{x:Null}" Click="BackToSetting_Click" Cursor="Hand" Background="#02000000">
+            <Image Source="/LaftArrow1.png" RenderTransformOrigin="0.5,0.4">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="3.5" ScaleY="3.5"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
+        <Button Template="{StaticResource NoMouseOverButtonTemplate}" x:Name="MoveToHome" Content="홈 화면으로 이동" HorizontalAlignment="Center" Height="32" VerticalAlignment="Bottom" Background="#02000000" Foreground="White" BorderBrush="White" Margin="0,0,0,38" Click="MatchingStartButton_Click" Padding="10,1,10,1" Cursor="Hand" Width="120">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label x:Name="LanguageLabel" Content="언어" HorizontalAlignment="Left" Margin="42,436,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" Height="24"/>
+        <ComboBox x:Name="languageSelect" HorizontalAlignment="Left" Margin="220,436,0,0" Width="144" Height="24" VerticalAlignment="Top" Background="White" VerticalContentAlignment="Center" FontFamily="MS Reference Sans Serif" Padding="22,3,5,3" Foreground="White" SelectionChanged="languageSelect_SelectionChanged" RenderTransformOrigin="-0.152,0.554">
+            <ComboBoxItem x:Name="selectKor" Content="한국어" Tag="ko-KR" />
+            <ComboBoxItem x:Name="selectEng" Content="English" Tag="en-US" />
+            <ComboBoxItem x:Name="selectJPN" Content="日本語" Tag="ja-JP" />
+        </ComboBox>
+        <Label x:Name="magSetLabel" Content="확대경 설정" HorizontalAlignment="Left" Margin="42,310,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0"/>
+        <Grid HorizontalAlignment="Center" Height="111" Margin="0,320,0,0" VerticalAlignment="Top" Width="536">
+            <Label x:Name="refreshLabel" Content="새로고침 빈도" Margin="58,26,0,0" VerticalAlignment="Top" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" HorizontalAlignment="Left" Width="76"/>
+            <Slider x:Name="refreshSlider" Style="{DynamicResource CustomSliderStyleKey}" HorizontalAlignment="Left" Height="23" Width="142" Margin="221,21,0,0" Value="3" ValueChanged="Slider_ValueChanged_1" LargeChange="1" Maximum="8" Minimum="3" SmallChange="1" VerticalAlignment="Top"/>
+            <Label x:Name="refreshLabel_Low" Content="낮음" HorizontalAlignment="Left" Margin="183,26,0,0" VerticalAlignment="Top" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0"/>
+            <Label x:Name="refreshLabel_High" Content="높음" HorizontalAlignment="Left" Margin="379,26,0,0" VerticalAlignment="Top" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0"/>
+            <Label x:Name="useableLabel" Content="사용 설정" Margin="58,66,0,0" VerticalAlignment="Top" Foreground="White" VerticalContentAlignment="Center" Padding="0,0,0,0" HorizontalAlignment="Left" Width="76"/>
+
+            <Label x:Name="magUserSelectLabel1" Height="18" Content="발표자만 사용" Margin="239,65,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Padding="5,0,0,0" VerticalContentAlignment="Center"/>
+            <CheckBox x:Name="checkboxJustMaster" Content="CheckBox" HorizontalAlignment="Left" Margin="221,66,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.661,0.515" Width="100" IsChecked="True" Click="checkboxJustMaster_Click"/>
+
+            <Label x:Name="magUserSelectLabel2" Height="18" Content="모두 사용" Margin="381,65,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Padding="5,0,0,0" VerticalContentAlignment="Center"/>
+            <CheckBox x:Name="checkboxEvryone" Content="CheckBox" HorizontalAlignment="Left" Margin="364,66,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.661,0.515" Width="100" Click="checkboxEvryone_Click"/>
+
+        </Grid>
+        <Label x:Name="cursorSetting" Content="포인터 설정" HorizontalAlignment="Left" Margin="42,239,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0"/>
+        <Label x:Name="cursorHideLabel" Height="18" Content="커서숨기기" Margin="63,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Padding="5,0,0,0" VerticalContentAlignment="Center"/>
+        <CheckBox x:Name="cursorHide" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="42,0,0,0" Tag="3" IsChecked="False" Unchecked="cursorHide_Unchecked" Width="100" BorderThickness="1,0,0,0" BorderBrush="{x:Null}" Checked="cursorHide_Checked"/>
+        <Label x:Name="alwaysCenterLabel" Height="18" Content="중앙에서 시작" Margin="241,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Padding="5,0,0,0" VerticalContentAlignment="Center"/>
+        <CheckBox x:Name="alwaysCenterCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="220,0,0,0" Tag="3" IsChecked="False" Unchecked="alwaysCenterCheckBox_Unchecked" Width="100" BorderThickness="1,0,0,0" BorderBrush="{x:Null}" Checked="alwaysCenterCheckBox_Checked"/>
+
+
+    </Grid>
+</Page>

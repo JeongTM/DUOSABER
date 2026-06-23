@@ -1,0 +1,73 @@
+﻿<Page x:Class="DUOsaber.SelectMainDevice"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DUOsaber"
+      mc:Ignorable="d" 
+      Title="SelectMainDevice" Width="536" Height="410">
+
+    <Page.Resources>
+        <ControlTemplate x:Key="NoMouseOverButtonTemplate" TargetType="Button">
+            <Border 
+                Background="{TemplateBinding Background}"  
+                BorderBrush="{TemplateBinding BorderBrush}"  
+                BorderThickness="{TemplateBinding BorderThickness}" Padding="5,0,5,0">
+                <ContentPresenter 
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{x:Static SystemColors.ControlLightBrush}" />
+                    <Setter Property="Foreground" Value="{x:Static SystemColors.GrayTextBrush}" />
+
+                </Trigger>
+
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Page.Resources>
+
+    <Grid x:Name="MainSelect">
+        <Grid x:Name="MyRadioButton" HorizontalAlignment="Center" VerticalAlignment="Top" Width="534" Height="410">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <RadioButton x:Name="Radio_0" Content="발표자로 선택" FlowDirection="RightToLeft" Foreground="White" FontSize="14" VerticalContentAlignment="Center" Padding="0,0,0,0" Margin="0,261,0,0" Tag="0" Checked="RadioButton_Checked" HorizontalAlignment="Center" VerticalAlignment="Top" Background="White" Cursor="Hand" MinWidth="105"/>
+            <RadioButton x:Name="Radio_1" Content="발표자로 선택" FlowDirection="RightToLeft" Foreground="White" FontSize="14" VerticalContentAlignment="Center" Padding="0,0,0,0" Tag="1" Checked="RadioButton_Checked" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,261,0,0" Cursor="Hand" Grid.Column="1" MinWidth="105"/>
+            <RadioButton x:Name="Radio_2" Content="발표자로 선택" FlowDirection="RightToLeft" Foreground="White" FontSize="14" VerticalContentAlignment="Center" Padding="0,0,0,0" Margin="0,261,0,0" Tag="2" Checked="RadioButton_Checked" HorizontalAlignment="Center" VerticalAlignment="Top" Cursor="Hand" Grid.Column="2" MinWidth="105"/>
+            <Button Template="{StaticResource NoMouseOverButtonTemplate}" x:Name="MoveToHome" Content="홈 화면으로 이동" HorizontalAlignment="Center" Height="32" VerticalAlignment="Bottom" Background="#02000000" Foreground="White" BorderBrush="White" Margin="0,0,0,38" Click="MatchingStartButton_Click" Padding="10,1,10,1" Cursor="Hand" Width="120" Grid.Column="1">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Label x:Name="FlagLabel_0" Content="청중" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" Margin="0,231,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Tag="0" MouseUp="FlagLabel_0_MouseUp" Width="178"/>
+            <Label x:Name="FlagLabel_1" Content="청중" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" Margin="0,231,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Tag="1" MouseUp="FlagLabel_0_MouseUp" Grid.Column="1" Width="178"/>
+            <Label x:Name="FlagLabel_2" Content="청중" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" Margin="0,231,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Tag="2" MouseUp="FlagLabel_0_MouseUp" Grid.Column="2" Width="178"/>
+            <Image x:Name="imageView0" HorizontalAlignment="Center" Height="80" Margin="0,135,0,0" VerticalAlignment="Top" Width="80" Tag="0" MouseUp="imageView0_MouseUp"/>
+            <Image x:Name="imageView1" HorizontalAlignment="Center" Height="80" Margin="0,135,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.5,0.5" Tag="1" MouseUp="imageView0_MouseUp" Grid.Column="1"/>
+            <Image x:Name="imageView2" HorizontalAlignment="Center" Height="80" Margin="0,135,0,0" VerticalAlignment="Top" Width="80" Tag="2" MouseUp="imageView0_MouseUp" Grid.Column="2"/>
+        </Grid>
+        <Label x:Name="pwd" Content="설정 &gt; 발표자 변경" HorizontalAlignment="Left" Margin="47,32,0,0" VerticalAlignment="Top" Foreground="White" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="NotConnectLabel" Content="기기를 조작하여 연결을 확인해주세요." HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" Margin="0,82,0,0"/>
+        <Button Template="{StaticResource NoMouseOverButtonTemplate}" x:Name="BackToSetting" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="24" Margin="16,42,0,0" BorderBrush="{x:Null}" Click="BackToSetting_Click" Cursor="Hand" Background="{x:Null}" Padding="0,0,0,0">
+            <Image Source="/LaftArrow1.png" RenderTransformOrigin="0.5,0.4">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="3.5" ScaleY="3.5"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
+
+    </Grid>
+</Page>
